@@ -2,12 +2,12 @@
 
 A Python command-line utility to fetch historical equity trading data (Open, High, Low, Close, Volume, Turnover, Deliverable Quantity, etc.) directly from the National Stock Exchange of India (NSE) and save it to a CSV file.
 
-It uses `curl-cffi` to mimic standard browser signatures and automatically chunks ranges longer than 365 days to bypass NSE endpoint constraints.
+It uses `curl-cffi` to mimic standard browser headers and automatically chunks ranges longer than 365 days to respect NSE endpoint constraints.
 
 ## Features
 
 - Fetches official historical data directly from the NSE API.
-- Implements `curl-cffi` to bypass Akamai WAF.
+- Implements `curl-cffi` to mimic standard browser headers.
 - **Auto-Chunking**: Automatically splits date ranges larger than 365 days into multiple sequential requests and merges them.
 - **Period Shorthands**: Supports retrieving data for standard periods (e.g., `1W`, `1M`, `6M`, `1Y`, `3Y`, `5Y`) automatically calculated from the current date.
 - Cleans and formats raw data fields (removes commas, normalizes numeric types) for easy analysis in Excel, pandas, or other tools.
@@ -58,6 +58,11 @@ python fetcher.py --symbol INFY --from-date 01-01-2025 --to-date 05-06-2026
 - `-o`, `--output`: Output CSV path (defaults to `{SYMBOL}_historical.csv`).
 - `--series`: Stock series (default: `EQ`).
 
+## Disclaimer
+
+This project is for educational and research purposes only. The developers are not responsible for any trading decisions or actions taken based on the data retrieved by this tool. Always verify financial data from official platforms.
+
 ## License
 
 This project is licensed under the MIT License.
+
